@@ -1,0 +1,35 @@
+.center	 {
+	text-align: center;
+}
+.left-sec {
+	width: 20%;
+	margin-left: 15%;
+	float: left;
+}
+.right-sec {
+	width: 50%;
+	margin-right: 15%;
+	float: right;
+}
+.label {
+	font-weight: bold;
+	display: inline-block;
+}
+.content {
+	display: inline-block;
+}
+.label-wrapper {
+	margin-top: 20px;
+	margin-left: 10px;
+}
+.misc-info {
+	border: thin solid black;
+}
+.img-section {
+	text-align: center;
+	margin-bottom: 30px;
+}
+.list-style {
+	font-size: 18px;
+	margin-bottom: 20px;
+}
