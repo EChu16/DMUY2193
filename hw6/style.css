@@ -1,0 +1,42 @@
+.center {
+	text-align:center;
+}
+.medium-container {
+	width: 500px;
+}
+.font-theme {
+	font-family: Avenir;
+}
+.center-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 40px;
+}
+.door-size {
+	width:200px;
+	height:350px;	
+}
+.image-container {
+	display: inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.room-label {
+	font-size: 20px;
+	font-style: italic;
+}
+body {
+	background-color: #7b3737;
+	color: #dcad97;
+}
+.stock-img {
+	width: 150px;
+	height:150px;
+}
+.border-wrapper {
+	width: 60%;
+	display: flex;
+	justify-content: center;
+	border: thin solid;
+}
