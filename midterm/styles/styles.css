@@ -1,0 +1,155 @@
+.navbar {
+	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #091536;
+    -moz-column-count: 5;
+    -webkit-column-count: 5;
+    column-count: 5;
+}
+
+.nav-item a{
+	display: block;
+    color: white;
+    text-align: center;
+    padding: 19px;
+    text-decoration: none;
+}
+
+.nav-item a.nav-link:hover {
+    background-color: #7D8EBB;
+}
+
+.nav-item a.nav-logo {
+	padding-top: 1px !important;
+	padding-left: 1px !important;
+	margin-right: 110px;
+}
+
+.logo {
+	position: absolute;
+	width: 125px;
+	height: 90px;
+}
+
+body {
+    background-color: #8e1f33;
+    font-family: Avenir;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+}
+
+.box-container {
+    border: thin solid #d66969;
+    margin-top: 100px;
+    padding: 50px;
+    width: 1200px;
+}
+
+.photo-wrapper {
+    width: 367px;
+    display: inline-block;  
+    float: left;
+}
+
+#about-pic, #contact-pic {
+    width: 367px;
+    border-radius:200px;
+}
+
+#project-pic {
+    width: 367px;
+    border-radius: 20px;
+}
+
+#project-shift-pic {
+    width: 200px;
+    margin-left: 100px;
+}
+
+.description-wrapper, .contact-wrapper {
+    width: 800px;
+    display: inline-block;
+}
+
+.project-row, .experience-row {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.project-title, .experience-title {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 25px;
+    margin-left: 50px;
+}
+
+.about-description, .project-description, .experience-description, .contact-form {
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+.section-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.company-link {
+    color: #d66969;
+}
+
+.project-link {
+    color: #7D8EBB;
+}
+
+.experience-date {
+    margin-left: 50px;
+}
+
+.experience-pic {
+    width: 367px;
+}
+
+.link-box {
+    margin-top: 20px;
+    margin-left:20px;
+}
+
+.link-box a {
+    color: white !important;
+}
+
+.label {
+    display: inline-block;
+}
+
+#name-input {
+    margin-left: 3px;
+    font-size: 20px;
+}
+
+#email-input {
+    margin-left:8px;
+    font-size: 20px;
+}
+
+#contact-body {
+    font-size: 20px;
+}
+
+#contact-submit {
+    font-size: 20px;
+}
+
+.title-wrapper {
+    text-align: center;
+    margin-top: 100px;
+}
