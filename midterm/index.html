@@ -32,10 +32,29 @@
 			</nav>
 		</div>
 		<div class="title-wrapper">
-			<h1>Hi, I'm Erich ... or see what I really look like in About Me!</h1>
+			<h1 id="title-content">Hi, I'm Erich ... or see what I really look like in About Me!</h1>
 		</div>
 		<div class="content">
 			<div id="sketch-canvas" style="text-align: center"></div>
 		</div>
+		<script type="text/javascript">
+			var quotes = [
+							"Hi, I'm Erich ... or see what I really look like in About Me!",
+							"Stop touching me!!!",
+							"Please hire me... I'll do anything",
+							"Just kidding, not ANYTHING",
+							"Depends how good the job is :)"
+						 ]
+			var title = document.getElementById('title-content');
+			var idx = 0;
+
+			document.getElementById('sketch-canvas').onclick = function() {
+				idx += 1;
+				if (idx >= quotes.length) {
+					idx = 0;
+				}
+				title.textContent = quotes[idx];
+			}
+		</script>
 	</body>
 </html>
