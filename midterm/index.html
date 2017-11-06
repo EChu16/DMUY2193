@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="styles/styles.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     	<script src="scripts/sketch.js"></script>
+    	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 	</head>
 	<body>
 		<div class="container-fluid">
@@ -45,16 +46,15 @@
 							"Just kidding, not ANYTHING",
 							"Depends how good the job is :)"
 						 ]
-			var title = document.getElementById('title-content');
 			var idx = 0;
 
-			document.getElementById('sketch-canvas').onclick = function() {
+			$('#sketch-canvas').click(function() {
 				idx += 1;
 				if (idx >= quotes.length) {
 					idx = 0;
 				}
-				title.textContent = quotes[idx];
-			}
+				$('#title-content').html(quotes[idx]);
+			})
 		</script>
 	</body>
 </html>
