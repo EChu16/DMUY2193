@@ -1,0 +1,42 @@
+<!--
+Erich Chu
+Question: How does one store form data despite internet being down?
+	-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>How do I cache data locally via JS?</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('input').each(function() {
+				$(this).val(localStorage.getItem($(this).prop('name')));
+			})
+		})
+	</script>
+</head>
+<body>
+	<form>
+		<div>
+			<span>Name</span>
+			<input type="text" name="name">
+		</div>
+		<div>
+			<span>Email</span>
+			<input type="text" name="email">
+		</div>
+		<div>
+			<span>Body</span>
+			<input type="text" name="content">
+		</div>
+	</form>
+	<script type="text/javascript">
+		$('input').each(function() {
+			$(this).on("change keyup paste", function() {
+				localStorage.setItem($(this).prop('name'), $(this).val())
+				console.log($(this).prop('name'), $(this).val())
+			});
+		});
+	</script>
+</body>
+</html>
