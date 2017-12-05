@@ -10,12 +10,15 @@
 	</head>
 	<body>
 		<div id="vn-container">
-			<div id="vn-header">VidNotes</div>
+			<div id="vn-header"><a href="#">VidNotes</a></div>
+			<div id="about"><a href="about.html">About</a></div>
 			<div id="vn-url">
 				<input type="text" name="vn-url" id="vn-url-text" placeholder="Enter Youtube URL here...">
 				<div id="vn-submit">Submit</div>
-				<div id="vn-import">Import</div>
-				<div id="vn-export">Export</div>
+				<div>
+					<input type="file" id="vn-import"/>
+					<div id="vn-export">Export</div>
+				</div>
 			</div>
 			<div id="player"></div>
 		</div>

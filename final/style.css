@@ -2,114 +2,175 @@
     font-family: liberatus;
     src: url(fonts/Libertatus-Reg-FFP.ttf);
 }
-
 @font-face {
     font-family: liberatus-italic;
     src: url(fonts/Libertatus-Reg-Italic-FFP.ttf);
 }
-
+@media all and (max-width:1275px) {
+	.content {
+		text-align: center !important;
+	}
+	.photo-wrapper {
+		float:none !important;
+	}
+	li {
+		text-align: left !important;
+		margin-left: 80px !important;
+	}
+	.about-description {
+		margin-left: 0px !important;
+	}
+	.box-container {
+		margin-top: 0px !important;
+		margin-bottom: 0px !important;
+	}
+}
+@media all and (max-width:815px){
+	.description-wrapper {
+		width: 600px !important;
+	}
+	li {
+		margin-left: 40px !important;
+	}
+}
+@media all and (max-width:600px){
+	.description-wrapper {
+		width: 450px !important;
+	}
+	li {
+		margin-left: 20px !important;
+	}
+}
+@media all and (max-width:500px){
+	.description-wrapper {
+		width: 350px !important;
+	}
+	li {
+		margin-left: 0px !important;
+	}
+}
+@media all and (max-width:1024px){
+	#vn-container, #vn-notes {
+		width: 100% !important;
+	}
+}
+@media all and (min-width:359px) and (max-width: 500px){
+	#vn-import {
+		width: 230px !important;
+	}
+	#vn-notes-container {
+		height: 400px !important;
+	}
+}
 
 body {
 	margin: 0;
 	padding: 0;
 	background-color: #6a91ff;
-
+	overflow-x: hidden;
 }
-
 #vn-container {
 	width: 60%;
 }
-
 #vn-header {
 	height: 100px;
-	display: flex;
+	display: inline-flex;
 	align-items: center;
 	font-size: 64px;
 	letter-spacing: 2px;
 	font-family: liberatus;
-	color: #FFFFEC;
 }
-
+#vn-header a{
+	color: #FFFFEC !important;
+}
+#about {
+	display: inline-flex;
+	align-items: center;
+	font-size: 22px;
+	letter-spacing: 2px;
+	font-family: liberatus;
+	text-decoration: underline;
+	padding-left: 20px;
+}
+#about a {
+	color: #FFFFEC !important;
+}
 #vn-header, #vn-url, #player {
 	padding-left: 15px;
 }
-
 #vn-url {
 	padding-bottom: 25px;
 }
-
 #vn-url-text {
 	width: 60%;
 	height: 28px;
 	font-family: Avenir;
 }
-
+#vn-import {
+	margin-top: 5px;
+	width: 300px;
+}
+#vn-submit, #vn-export {
+	margin-left: 15px;
+}
 #vn-submit, #vn-import, #vn-export {
 	background-color: #FFFFEC;
 	padding: 5px;
 	border-radius: 3px;
-	margin-left: 15px;
 	color: #6a91ff;
 	font-family: liberatus;
 	cursor: pointer;
 }
-
 #vn-url-text, #vn-submit, #vn-import, #vn-export {
 	display: inline-block;
 	font-size: 20px;
 }
-
 #vn-container, #vn-notes, #vn-url-text, .vn-timestamp, .vn-note-text, .note-entry {
 	float: left;
 }
-
 #vn-notes {
 	margin: 30px 0 0 15px;
 	width: 38%;
 	display: block;
 }
-
 #vn-notes-container {
 	background-color: #ffffa5;
 	overflow-y: scroll;
+	height: 600px;
+	width: 637px;
 }
-
 #vn-text {
 	resize: none;
+	width: 632px;
+	height: 100px;
 }
-
 #vn-text, .note-entry {
 	font-size: 18px;
 	font-family: Avenir;
 }
-
 .note-entry {
 	border-bottom: thin solid grey;
 	padding-bottom: 10px;
+	width: 100%;
+	display: inline-block;
 }
-
 .vn-timestamp {
 	text-align: center;
 	width: 80px;
 	border-right: thin solid grey;
 }
-
 .vn-timestamp-text {
 	text-decoration: underline;
 	color: blue;
 	cursor: pointer;
 }
-
 .vn-note-text {
 	padding-left: 15px;
-	width: 500px;
 }
-
 .vn-timestamp, .vn-note-text {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-
 .vn-tool-btns {
 	float:right;
 	padding: 10px;
@@ -118,11 +179,65 @@ body {
 	font-family: liberatus;
 	color: #6a91ff;
 	cursor: pointer;
+	display: inline-block;
 }
-
 .note-tools {
 	width: 20px;
 	height: 20px;
 	cursor: pointer;
 	padding: 5px 5px 0 5px;
+}
+#vn-tools {
+	text-align: right;
+	width: 638px;
+}
+.content {
+    display: flex;
+    justify-content: center;
+    font-family: Avenir;
+    color: #FFFFEC;
+}
+
+.box-container {
+    border: thin solid #FFFFEC;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+.photo-wrapper {
+    width: 367px;
+    display: inline-block;  
+    float: left;
+}
+
+#about-pic {
+    width: 367px;
+    border-radius:200px;
+}
+
+.section-header {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.link-box {
+    margin-top: 20px;
+    margin-left:20px;
+}
+
+.link-box a {
+    color: white !important;
+}
+
+.description-wrapper {
+    width: 800px;
+    display: inline-block;
+}
+
+.about-description {
+    margin-left: 50px;
+    font-size: 20px;
+    margin-top: 20px;
 }

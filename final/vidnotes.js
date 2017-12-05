@@ -2,10 +2,63 @@ const INITIAL_VID_ID = 'M7lc1UVf-VE'
 const YT_PADDING = 15;
 var vidNotes;
 
+// Function to save text into a text file easily
+// https://stackoverflow.com/questions/8693289/how-to-write-localstorage-data-to-a-text-file-in-chrome
+(function(console){
+  console.save = function(data, filename){
+    if(!data) {
+      console.error('Console.save: No data')
+      return;
+    }
+
+    if(!filename) filename = 'vidnotes.json'
+
+    if(typeof data === "object"){
+      data = JSON.stringify(data, undefined, 4)
+    }
+
+    var blob = new Blob([data], {type: 'text/json'}),
+      e    = document.createEvent('MouseEvents'),
+      a    = document.createElement('a')
+
+    a.download = filename
+    a.href = window.URL.createObjectURL(blob)
+    a.dataset.downloadurl =  ['text/json', a.download, a.href].join(':')
+    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+    a.dispatchEvent(e)
+  }
+})(console)
+
+function getMediaQueryWidth() {
+  var elementWidth;
+  if (window.outerWidth < 480) {
+    elementWidth = window.outerWidth * .93; 
+  }
+  else if (window.outerWidth < 600) {
+    elementWidth = window.outerWidth * .95; 
+  }
+  else if (window.outerWidth < 900) {
+    elementWidth = window.outerWidth * .96; 
+  }
+  else if (window.outerWidth < 1024) {
+    elementWidth = window.outerWidth * .97; 
+  }
+  return elementWidth;
+}
+
+function calculateYTWidth() {
+  var ytWidth = (window.outerWidth * .60) - (YT_PADDING * 2);
+  if(window.outerWidth < 1024) {
+    ytWidth = getMediaQueryWidth();
+  }
+  return ytWidth;
+}
+
 function onYouTubeIframeAPIReady() {
 	// Calculate youtube video dimensions
-	const ytWidth = (window.outerWidth * .60) - (YT_PADDING * 2);
-	const ytHeight = (ytWidth * 9) / 16;
+	const ytWidth = calculateYTWidth();
+  const ytHeight = (ytWidth * 9) / 16;
+
   var yt = new YT.Player('player', {
     height: ytHeight,
     width: ytWidth,
@@ -31,60 +84,53 @@ function VidNotes(yt, videoId) {
   this.currentNoteIdx = -1;
 
   this.initialize = function() {
-  	this.setElementSizes();
   	this.bindElements();
   	this.initOrGetNotes(this.videoId);
-  }
-
-  this.setElementSizes = function() {
-  	var ytWidth = (window.outerWidth * .60) - (YT_PADDING * 2);
-    if (ytWidth < 360) {
-      ytWidth = 360;
+    if (window.outerWidth < 1024) {
+      const notesWidth = getMediaQueryWidth();
+      this.setNoteSizes(notesWidth);
     }
-		const ytHeight = (ytWidth * 9) / 16;
-    console.log(ytWidth);
-		this.yt.setSize(ytWidth, ytHeight);
-		const genericWidth = window.outerWidth * .38;
-
-		$('#vn-notes').css({'width': genericWidth});
-		$('#vn-tools').css({'width': genericWidth});
-		$('#vn-notes-container').css({'height': window.outerHeight * .60});
-		$('#vn-text').css({'width': genericWidth - 5, 'height': (window.outerHeight * .15)});
-		this.setNoteSizes();
   }
 
-  this.setNoteSizes = function() {
-  	const notesWidth= $('#vn-notes-container').width();
-  	const genericWidth = window.outerWidth * .38;
-  	$('.vn-timestamp').each(function() {
-			$(this).css({'width':(notesWidth * .15)});
-		});
-		$('.vn-note-text').each(function() {
-			$(this).css({'width':(notesWidth * .80)});
-		});
-		$('.note-entry').each(function() {
-			$(this).css({'width': genericWidth});
-		});
+  this.resizeYt = function() {
+    const ytWidth = calculateYTWidth();
+    const ytHeight = (ytWidth * 9) / 16;
+    this.yt.setSize(ytWidth, ytHeight);
+  }
+
+  this.setNoteSizes = function(notesWidth) {
+    $('#vn-notes-container').css('width', notesWidth);
+    $('#vn-tools').css('width', notesWidth+1);
+    $('#vn-text').css('width', notesWidth-5);
   }
 
   this.bindElements = function() {
   	var self = this;
-  	$(window).resize(function() {
-			self.setElementSizes();
-		});
+    $(window).resize(function() {
+      self.resizeYt();
+      const notesWidth = getMediaQueryWidth();
+      self.setNoteSizes(notesWidth);
+    })
   	$('#vn-submit').click(function() {
   		var vnText = $('#vn-url-text');
   		self.playYTUrl(vnText.val());
   		vnText.val('');
   	});
     $('#vn-export').click(function() {
-      prompt("Copy data below to import elsewhere", localStorage['VidNotes']);
+      console.save(localStorage['VidNotes']);
     })
-    $('#vn-import').click(function() {
-      const vn_data = prompt("Input VidNotes data... this will overwrite pre-existing notes for all videos", "");
-      if (vn_data != null && vn_data != "") {
-        localStorage['VidNotes'] = vn_data;
-        self.reloadNotesContainer();
+    $('#vn-import').change(function() {
+      var file = $(this)[0].files[0];
+      if (file.type.match('application/json')) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          localStorage['VidNotes'] = reader.result;
+          self.reloadNotesContainer();
+        }
+        reader.readAsText(file);    
+      } else {
+        file.value = "";
+        alert("File not supported!");
       }
     })
   	$('#vn-submit-note').click(function() {
@@ -172,7 +218,6 @@ function VidNotes(yt, videoId) {
       "<img class='note-tools trash-icon' src='images/trash_icon.png'></div></div><div class='vn-note-text'>" + 
 			noteEntry + "</div></div>";
 		$('#vn-notes-container').append(noteHTML);
-		this.setNoteSizes();
 	}
 
   this.reloadNotesContainer = function() {
