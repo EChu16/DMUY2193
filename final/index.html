@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>VidNotes</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+		<script type="text/javascript" src="vidnotes.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div id="vn-container">
+			<div id="vn-header">VidNotes</div>
+			<div id="vn-url">
+				<input type="text" name="vn-url" id="vn-url-text" placeholder="Enter Youtube URL here...">
+				<div id="vn-submit">Submit</div>
+				<div id="vn-import">Import</div>
+				<div id="vn-export">Export</div>
+			</div>
+			<div id="player"></div>
+		</div>
+		<div id="vn-notes">
+			<div id="vn-notes-container"></div>
+			<div id="vn-tools">
+				<div class="vn-tool-btns" id="vn-submit-note">Submit</div>
+			</div>
+			<div id="vn-note-writer">
+				<textarea id="vn-text" placeholder="Insert a new note here..."></textarea>
+			</div>
+		</div>
+	</body>
+</html>
