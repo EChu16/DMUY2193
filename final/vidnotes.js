@@ -37,8 +37,12 @@ function VidNotes(yt, videoId) {
   }
 
   this.setElementSizes = function() {
-  	const ytWidth = (window.outerWidth * .60) - (YT_PADDING * 2);
+  	var ytWidth = (window.outerWidth * .60) - (YT_PADDING * 2);
+    if (ytWidth < 360) {
+      ytWidth = 360;
+    }
 		const ytHeight = (ytWidth * 9) / 16;
+    console.log(ytWidth);
 		this.yt.setSize(ytWidth, ytHeight);
 		const genericWidth = window.outerWidth * .38;
 
